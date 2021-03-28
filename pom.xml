@@ -25,6 +25,11 @@
       <version>6.8</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>3.141.59</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -47,6 +52,11 @@
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
+          <configuration>
+            <suiteXmlFiles>
+              <suiteXmlFile>${maven-surefire-plugin.suiteXmlFile}</suiteXmlFile>
+            </suiteXmlFiles>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
@@ -72,4 +82,37 @@
       </plugins>
     </pluginManagement>
   </build>
+
+  <profiles>
+    <profile>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <id>all-tests</id>
+      <properties>
+        <maven-surefire-plugin.suiteXmlFile>
+          src\test\resources\TestEx1-2.xml
+        </maven-surefire-plugin.suiteXmlFile>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>ex1-test</id>
+      <properties>
+        <maven-surefire-plugin.suiteXmlFile>
+          src\test\resources\TestEx1.xml
+        </maven-surefire-plugin.suiteXmlFile>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>ex2-test</id>
+      <properties>
+        <maven-surefire-plugin.suiteXmlFile>
+          src\test\resources\TestEx2.xml
+        </maven-surefire-plugin.suiteXmlFile>
+      </properties>
+    </profile>
+  </profiles>
+
 </project>
