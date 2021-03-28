@@ -1,0 +1,7 @@
+<suite name="suite">
+    <test name="test suite">
+        <classes>
+            <class name="hw2.ex2.Ex2Tests"/>
+        </classes>
+    </test>
+</suite>
